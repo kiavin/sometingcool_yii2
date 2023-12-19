@@ -72,9 +72,13 @@ class AdminUser extends \yii\db\ActiveRecord implements IdentityInterface
 public static function findByUsername($username)
 {
     return self::findOne(['username'=>$username]);
-
-
 }
+
+public static function findByEmail($email)
+{
+    return self::findone(['email'=>$email]);
+}
+
 public function validatePassword($password)
 {
     return $this->password === $password;
@@ -82,7 +86,6 @@ public function validatePassword($password)
 public function getId()
 {
     return $this->id;
-
 }
 
 public function validateAuthKey($authKey)

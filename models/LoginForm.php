@@ -53,6 +53,17 @@ class LoginForm extends Model
         }
     }
 
+    public function validateemail($attribute, $params)
+    {
+        if (!$this->hasErrors()) {
+            $user = $this->getUser();
+
+            if (!$user || !$user->validateemail($this->email)) {
+                $this->addError($attribute, 'Incorrect email or password.');
+            }
+        }
+    }
+
     /**
      * Logs in a user using the provided username and password.
      * @return bool whether the user is logged in successfully

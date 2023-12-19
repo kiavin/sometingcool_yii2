@@ -9,7 +9,6 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
-use app\models\signupForm;
 use app\models\AdminUser;
 
 class SiteController extends Controller
@@ -78,16 +77,15 @@ class SiteController extends Controller
     public function actionSignup()
     {
         $model = new AdminUser(); // Use the correct model
-        
+
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
             // Successfully signed up
             // You can redirect or do other actions
             return $this->redirect(['/Admin']);
         }
-        
+
         // Render the signup form with errors
         return $this->render('signup', ['model' => $model]);
-        
     }
 
 
